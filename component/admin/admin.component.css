@@ -1,0 +1,20 @@
+.card{
+    
+    border: none;
+    width: 500px;
+    padding: 20px;
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background:rgb(217, 221, 224);
+    background: linear-gradient(90deg,rgb(149, 163, 173) 0%,rgb(159, 153, 173) 100%);
+
+}
+.heading{
+    text-align: center;
+    padding-bottom: 10px;
+}
+.button{
+    margin-right: 20px;
+}

@@ -1,0 +1,56 @@
+<admin-header></admin-header>
+<ng-container *ngIf="userOrders.length !=0">
+    <div class="container">
+        <div class="orderHeading bg-light"  >
+            <h5 class="card-title">Users' Orders</h5>
+        </div>
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Customer Id</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>Description</th>
+                            <th>Price</th>                            
+                            <th>Total</th>
+                            <th>Delivery Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of userOrders; let i = index">
+                            <td>{{i+1}}</td>
+                            <td style="width: 12%;">{{item.CustomerId}}</td>
+                            <td>{{item.Title}}</td>
+                            <td><img style="width: 120px;" src="{{item.ImageLink}}" alt=""></td>
+                            <td style="width: 25%;">{{item.Description}}</td>
+                            <th style="width: 12%;">{{item.Price}}</th>                            
+                            <td style="width: 12%;">{{item.Price}}</td>
+                            <td style="width: 12%;">{{item.IsDelivered ? 'Delivered' : 'Not Delivered'}}</td>
+                            <td>
+                                <button *ngIf="!item.IsDelivered" (click)="itemDelivered(item)" class="btn btn-outline-info">Delivered</button>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="userOrders.length ==0" >
+    <div class="container" >
+        <div class="card bg-light"  >
+            <h5 class="card-title">Users' Orders</h5>
+        </div>
+        <div class="center">
+            <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+            <h4>User haven't ordered yet!</h4>
+        </div>
+    </div>
+</ng-container>

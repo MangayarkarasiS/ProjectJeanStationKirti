@@ -1,0 +1,97 @@
+<app-header></app-header>
+<div class="color rounded-3">
+    <div class="container">
+        <form [formGroup]="paymentForm"  (ngSubmit)="paymentSubmit()" [ngSwitch]="selectedPayment">
+            <div class="row g-0">
+                <div class="col text-center">
+                    <span class="fs-3 text-center"><h1>Payment Point</h1></span>
+                </div>
+            </div>
+            <p class="text-center fs-3 text-center rounded-3" [ngClass]="isAccountCreated ? 'text-success pb-1': 'text-danger pb-1'">{{displayMsg}}</p>
+            <div class="row g-0 box bg-light">
+                <div class="col">
+                    <span class="fs-3 text-center"><h2>Select Option</h2></span>
+                    <select class="form-control" (change)="getpayment($event)" formControlName="paymentoption" style="border:2px solid black">
+                        <option value="COD">Cash On Delivery</option>
+                        <option value="DC">Debit Card</option>
+                        <option value="CC">Credit Card</option>
+                        <option value="NB">Net Banking</option>
+                        <option  value="UPI">UPI</option>
+                    </select>
+                </div>
+            </div>
+<div>
+    <div class="row g-0 bg-light box mt-5" *ngSwitchCase="'NB'">
+        <div class="col p-2 mb-3 mt-3 ">  
+            <span class="fs-3 text-center"><h2>Net Banking</h2></span>
+            <span class="fs-3"><h4>Net Banking Id :</h4></span>
+            <input type="text" class="form-control" id="netbankingId"  formControlName="netbankingId"  placeholder="User ID*">
+            <div class="form-text text-danger" *ngIf="NetBankingID.errors?.['required'] && (NetBankingID.dirty || NetBankingID.touched)">User ID is Required</div>
+            <div class="form-text text-danger" *ngIf="NetBankingID.errors?.['pattern'] && (NetBankingID.dirty || NetBankingID.touched)">User ID in Number</div><br>
+            <span class="fs-3"><h4>Password :</h4></span>
+            <input type="text" class="form-control" id="netbankingpassword"  formControlName="netbankingpassword"  placeholder="Password*">  
+            <div class="form-text text-danger" *ngIf="NetBankingPassword.errors?.['required'] && (NetBankingPassword.dirty || NetBankingPassword.touched)">Password is Required</div>
+        </div>
+    </div>
+    <div class="row g-0 bg-light box mt-5" *ngSwitchCase="'UPI'">
+        <div class="col p-2 mb-3 mt-3 "> 
+            <span class="fs-3 text-center"><h2>UPI</h2></span>
+            <span class="fs-3 "><h4>UPI ID :</h4></span>
+            <input type="text" class="form-control" id="upiid"  formControlName="upiid"  placeholder="UPI ID*">
+            <div class="form-text text-danger" *ngIf="UPI.errors?.['required'] && (UPI.dirty || UPI.touched)">UPI ID is Required</div>
+            <div class="form-text text-danger" *ngIf="UPI.errors?.['email'] && (UPI.dirty || UPI.touched)">Use @ Right Format</div>
+        </div>
+    </div>
+    <div class="row g-0 bg-light box mt-5" *ngSwitchCase="'DC'">
+        <div class="col p-2 mb-3 mt-3 ">  
+            <span class="fs-3 text-center"><h2>Debit Card</h2></span>
+            <span class="fs-3"> Card Holder Name :</span>
+            <input type="text mb-5 mb-5" class="form-control" id="debitholdername"  formControlName="debitholdername"  placeholder=" Card Holder Name">
+            <div class="form-text text-danger" *ngIf="DebitHolderName.errors?.['required'] && (DebitHolderName.dirty || DebitHolderName.touched)">Holder Name is Required</div><br>
+            <div class="form-text text-danger" *ngIf="DebitHolderName.errors?.['pattern'] && (DebitHolderName.dirty || DebitHolderName.touched)">Write in Word</div>
+            <span class="fs-3"><h4>Card Number :</h4></span>
+            <input type="text" class="form-control" id="debitcardnumber"  formControlName="debitcardnumber"  placeholder="XXXX-XXXX-XXXX-XXXX">
+            <div class="form-text text-danger" *ngIf="DebitCardNumber.errors?.['required'] && (DebitCardNumber.dirty || DebitCardNumber.touched)">Card Number is Required</div>
+            <div class="form-text text-danger" *ngIf="DebitCardNumber.errors?.['pattern'] && (DebitCardNumber.dirty || DebitCardNumber.touched)">Write in Number</div>
+            <div class="form-text text-danger" *ngIf="DebitCardNumber.errors?.['max'] && (DebitCardNumber.dirty || DebitCardNumber.touched)">Card Number is 12</div><br>
+            <span class="fs-3"><h4>Pin :</h4></span>
+            <input type="text" class="form-control" id="debitcardpassword"  formControlName="debitcardpassword"  placeholder="Password">
+            <div class="form-text text-danger" *ngIf="DebitCardPassword.errors?.['required'] && (DebitCardPassword.dirty || DebitCardPassword.touched)">Password is Required</div>
+        </div>
+    </div>
+    <div class="row g-0 bg-light box mt-5" *ngSwitchCase="'CC'">
+        <div class="col p-2 mb-3 mt-3 ">  
+            <span class="fs-3 text-center"><h2>Credit Card</h2></span>
+            <span class="fs-3"><h4>Card Holder Name :</h4></span>
+            <input type="text mb-5 mb-5" class="form-control" id="creditholdername"  formControlName="creditholdername"  placeholder="Credit Holder Name*">
+            <div class="form-text text-danger" *ngIf="CreditHolderName.errors?.['required'] && (CreditHolderName.dirty || CreditHolderName.touched)">Holder Name is Required</div>
+            <div class="form-text text-danger" *ngIf="CreditHolderName.errors?.['pattern'] && (CreditHolderName.dirty || CreditHolderName.touched)">Write in Word</div><br>
+            <span class="fs-3"><h4>Card Number :</h4></span>
+            <input type="text" class="form-control" id="creditcardnumber"  formControlName="creditcardnumber"  placeholder="XXXX-XXXX-XXXX-XXXX">
+            <div class="form-text text-danger" *ngIf="CreditCardNumber.errors?.['required'] && (CreditCardNumber.dirty || CreditCardNumber.touched)">Card Number is Required</div>
+            <div class="form-text text-danger" *ngIf="CreditCardNumber.errors?.['pattern'] && (CreditCardNumber.dirty || CreditCardNumber.touched)">Write in Number</div>
+            <div class="form-text text-danger" *ngIf="CreditCardNumber.errors?.['max'] && (CreditCardNumber.dirty || CreditCardNumber.touched)">Card Number is 12</div><br>
+            <span class="fs-3 "><h4>Pin :</h4></span>
+            <input type="text" class="form-control" id="creditcardpassword"  formControlName="creditcardpassword"  placeholder="Password*">
+            
+            <div class="form-text text-danger" *ngIf="CreditCardPassword.errors?.['required'] && (CreditCardPassword.dirty || CreditCardPassword.touched)">Password is Required</div>
+        </div>
+    </div> 
+</div>
+            <div class="row g-0 bg-light box mt-5">
+                <div class="col text-center p-2 mb-3">
+                    <span class="fs-3"><h2>Write Shipping Address</h2></span>
+                    <input type="text" class="form-control" placeholder="Shipping Address*" formControlName="shippingaddress">
+                    <div class="form-text text-danger" *ngIf="ShippingAddress.errors?.['required'] && (ShippingAddress.dirty || ShippingAddress.touched)">Shipping Address is Required</div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-6 offset-3 ">
+                    <div class="d-grid items-center">
+                        <button type="submit" class="btn btn-primary w-100" [disabled]="paymentForm.valid">Click Here</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

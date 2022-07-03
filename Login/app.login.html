@@ -1,0 +1,86 @@
+<app-header></app-header>
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page in HTML with CSS Code Example</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+</head>
+<body>
+<div style="margin-top: 2px;" class="box-form">
+	<div class="left">
+		<div class="overlay">
+		<h1>Welcome to</h1>
+        <h1>Jeanstation</h1><br><br><br>
+        <h3><b>Makes Shopping Much Easier !</b></h3>
+        <p>JeanStation is an online application which makes shopping easier. Customer can browse to the products and do the shopping!
+            We hope you have a amazing experience!  </p>
+        <br><br>
+	<span>
+			<!-- <p>Login with social media</p>
+			 <!<a [routerLink]="['/Login']"><i class="fa fa-google" aria-hidden="true"></i></a> -
+			<a [routerLink]="['/Login']"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a>
+			<a [routerLink]="['/Login']"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a>--><br><br><br><br> <br><br>    </span>
+		</div>
+	</div>
+	
+	
+	<div class="right">
+		<h5><b>Login</b></h5>
+        <div class="account">		    
+            <p>Don't have an account? <a [routerLink]="['/UserRegistration']">Create Your Account </a> it takes less than a minute</p>
+
+        </div>	
+
+        <div class="inputs">
+            <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+                <fieldset>
+                    <div class="form-group">
+                            <!-- <label for="name">Username</label> -->
+                            <input type="text" class="form-control" name="Username" [(ngModel)]="LoginModel.Username" maxlength="50"
+                                #refUsername="ngModel" id="Username" placeholder="user name" required>
+                            <div *ngIf="!refUsername.valid  && (refUsername.dirty || refUsername.touched)" class="alert alert-danger" style="margin-top: 5px;">
+                              
+                                Username is required
+                            </div>
+
+                    </div>
+                    <div class="form-group">
+                            <!-- <label for="name">Password</label> -->
+                            <input type="password" class="form-control" name="Password" [(ngModel)]="LoginModel.Password" maxlength="50"
+                                #refPassword="ngModel" id="Password" placeholder="password" required>
+                            <div *ngIf="!refPassword.valid  && (refPassword.dirty || refPassword.touched)" class="alert alert-danger" style="margin-top: 5px;">
+                                
+                                Password is required
+                            </div>
+                    </div>
+                    <button style="margin-top: 40px;" type="submit" [disabled]="!f.form.valid" class="btn btn-lg btn-success btn-block">Login</button>
+                        
+                                                  
+                </fieldset>
+            </form>
+		</div>
+			
+			<br><br>
+			
+		<div class="remember-me--forget-password">
+        <label>
+            <input type="checkbox" name="item" checked/>
+            <span class="text-checkbox">Remember me</span>
+        </label>
+        <p><a style="margin-top: 15px;"  class="btn btn-outline-info" [routerLink]="['/ResetPassword']">Forgot Password? </a></p>
+		</div>
+			
+			<br>
+	</div>
+	
+</div>
+  
+</body>
+</html>

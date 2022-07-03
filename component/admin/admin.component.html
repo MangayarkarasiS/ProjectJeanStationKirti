@@ -1,0 +1,55 @@
+
+<admin-header></admin-header>
+
+<div class="container" style="margin-top: 100px;">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1 class="heading">Add Product</h1>
+                    <form [formGroup]="ProductForm" (ngSubmit)="addproduct(ProductForm.value)" novalidate>
+                        
+    <div>
+        <label for="Title">Product Name</label><br>
+        <input type="text" id="Product Name" name="Product Name" placeholder="Enter Product Name" formControlName="Title" ngmodel><br>
+        <span style="color: red;"*ngIf="Title && Title.invalid && Title.touched">product name is required</span>
+    </div><br>
+    
+    <div>
+        <label for="Description">product_description:</label><br>
+        <input  type="text" id="product_description" name="product_description" placeholder="Enter product_description"formControlName="Description" ngmodel><br>
+        <span style="color:red;" *ngIf="Description && Description.invalid && Description.touched">product_description should not empty</span>
+    </div><br>
+    <div>
+        <label for="Price">product_price:</label><br>
+        <input type="number" id="product_price" name="product_price" placeholder="Enter product_price"formControlName="Price" ngmodel><br>
+        <span style="color:red;" *ngIf="Price && Price.invalid && Price.touched">product price should not empty</span>
+    </div><br>
+    <div>
+        <label for="Category">product_category:</label><br>
+        <input type="text" id="Category" name="Category" placeholder="Enter Category"formControlName="Category" ngmodel><br>
+        <span style="color:red;" *ngIf="Category && Category.invalid && Category.touched">product_category should not empty</span>
+    </div><br>
+    <div>
+        <label for="Rating">product_Rating:</label><br>
+        <input type="text" id="Rating" name="Rating" placeholder="Enter Rating"formControlName="Rating" ngmodel><br>
+        <span style="color:red;" *ngIf="Category && Category.invalid && Category.touched">product_rating should not empty</span>
+    </div><br>
+    <div>
+        <label for="ImageLink">product_ImageLink:</label><br>
+        <input type="string" id="ImageLink" name="ImageLink" placeholder="Enter Image url"formControlName="ImageLink" ngmodel><br>
+        <span style="color:red;" *ngIf="ImageLink && ImageLink.invalid && ImageLink.touched">image url should not empty</span>
+    </div><br>
+    
+    
+   
+    <button class="button" type="submit" [disabled]="ProductForm.invalid">Save</button>
+    <button class="button" type="button" routerLink="/view" >Cancel</button>
+
+
+</form>
+</div>
+</div>
+</div>
+    </div>
+</div>

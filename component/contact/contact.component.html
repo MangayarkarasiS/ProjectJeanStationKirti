@@ -1,0 +1,53 @@
+<app-header></app-header>
+<div class="container">
+
+  <div style="text-align:center">
+    <h2>Contact Us</h2>
+    <p>Swing by for a cup of coffee, or leave us a message:</p>
+  </div>
+  <div class="row">
+    <div class="column">
+      <img src="https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3219580/05bfeec34c53de8426da54d25e104e26/preview.png?t=1655629943835" style="width:100%">
+    </div>
+    <div class="column">
+      <form [formGroup]="contactForm" (ngSubmit)="addData(contactForm.value)" novalidate>
+        
+        <label for="name">Full Name</label>
+        
+        <input type="text" id="name" name="name" placeholder="Your name.." formControlName="name">
+        <div *ngIf="!name?.valid && (name?.dirty ||name?.touched)">
+        <div [hidden]="!name?.errors?.['required']">
+          Name is required
+          </div></div>
+       
+        <label for="gmail">Gmail</label><br>
+        <input type="text" id="gmail" name="gmail" placeholder="example@gmail.com.." formControlName="gmail"  ><br>
+        <div *ngIf="!gmail?.valid && (gmail?.dirty ||gmail?.touched)">
+          <div [hidden]="!gmail?.errors?.['required']">
+            gmail is required
+            </div></div>
+         
+        <label for="country">Country</label><br>
+        
+        <select id="country" name="country" formControlName="country" >
+          <option value="australia">Australia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+          <option value="India">India</option>
+          <option value="Uk">UK</option>
+
+        </select>
+        
+        <label for="subject">Subject</label>
+        <textarea id="subject" name="subject" placeholder="Write your review.." style="height:170px" formControlName="subject" ></textarea>
+        <div *ngIf="!subject?.valid && (subject?.dirty ||subject?.touched)">
+          <div [hidden]="!subject?.errors?.['required']">
+            Subject is required
+            </div></div>
+        
+        <!-- <input type="submit" [disabled]="!contactForm.valid" value="Submit"> -->
+        <button type="submit" [disabled]="!contactForm.valid" class="btn btn-lg btn-success btn-block">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

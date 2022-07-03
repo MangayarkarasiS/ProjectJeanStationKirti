@@ -1,0 +1,39 @@
+
+<admin-header></admin-header>
+<!-- <button class="button" routerLink="/Admin/Dashboard">Back</button> -->
+<table class="table" style="margin: 10px; margin-top: 20px;">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Category</th>
+            <th scope="col">Rating</th>
+            <th scope="col">ImageLink</th>
+            <!-- <th scope="col">Action</th> -->
+            
+        </tr>
+    </thead>
+
+    <tbody class="">
+        <tr *ngFor="let row of product">
+            <th>{{row.Id}}</th>
+            <td>{{row.Title}}</td>
+            <td>{{row.Description}}</td>           
+            <td>{{row.Price}}</td>
+            <td>{{row.Category}}</td>
+            <td>{{row.Rating}}</td>
+            <td><img [src] ="row.ImageLink" 
+                style="width: 100px;height: 100px;"></td>
+            <!-- <td>{{row.ImageLink}}</td>            -->
+
+
+            <!-- <td>
+               
+                <button  class="btn btn-danger mx-3" (click)="deleteProduct(row)">Delete</button>
+            </td> -->
+
+        </tr>
+    </tbody>
+</table>

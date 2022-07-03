@@ -1,0 +1,124 @@
+<app-header></app-header>
+<body>
+    <mdb-carousel   class="carousel slide carousel-fade" [animation]="'fade'">
+        <mdb-carousel-item>
+          <div class="view w-100 " style="position: relative;">
+            <img   style="height: 200px;"  class="d-block w-100" src="https://www.printland.in/items/admin/uploads/personalised-tshirts_1598257547.png" alt="First slide">
+            <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+          </div>
+          <div class="carousel-caption">
+            <h3 class="h3-responsive"></h3>
+           
+          </div>
+        </mdb-carousel-item>
+        <mdb-carousel-item>
+          <div class="view w-100">
+            <img style="height: 200px;"   class="d-block w-100" src="https://renata.fashion/wp-content/uploads/2020/12/women-t.shirts-1.jpg" alt="Third slide">
+            <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+          </div>
+          <div class="carousel-caption">
+            <h3 class="h3-responsive"></h3>
+            
+          </div>
+        </mdb-carousel-item>
+        <mdb-carousel-item>
+          <div class="view w-100">
+            <img  style="height: 200px;;"  class="d-block w-100"    src="https://tarakonline.com/upload/HomeBanner/Website_img/61201.jpg" alt="Second slide">
+            <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+          </div>
+          <div class="carousel-caption">
+            <h3 class="h3-responsive"></h3>
+            
+          </div>
+        </mdb-carousel-item>
+        <mdb-carousel-item>
+          <div class="view w-100">
+            <img style="height: 200px;"   class="d-block w-100" src="https://realkart.in/images/home/slide-2.jpg" alt="Third slide">
+            <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+          </div>
+          <div class="carousel-caption">
+            <h3 class="h3-responsive"></h3>
+            
+          </div>
+        </mdb-carousel-item>
+        <mdb-carousel-item>
+          <div class="view w-100">
+            <img style="height: 200px;"   class="d-block w-100" src="https://www.artik.com/media/catalog/category/Artik_Banner_CustomT-Shirts.jpg" alt="Third slide">
+            <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+          </div>
+          <div class="carousel-caption">
+            <h3 class="h3-responsive"></h3>
+            
+          </div>
+        </mdb-carousel-item>
+        <mdb-carousel-item>
+          <div class="view w-100">
+            <img style="height: 200px;"   class="d-block w-100" src="https://tarakonline.com/upload/HomeBanner/Website_img/1343.jpg" alt="Third slide">
+            <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+          </div>
+          <div class="carousel-caption">
+            <h3 class="h3-responsive"></h3>
+            
+          </div>
+        </mdb-carousel-item>
+      </mdb-carousel>
+
+<!-- <div class="card-top container-fluid bg-warning">
+    <div class="container d-flex">
+        <div class="item btn">
+            <a (click)="filter('')">
+              
+                <h6>All products</h6>
+            </a>
+        </div>
+        <div class="item btn" >
+            <a (click)="filter('electronics')">
+                              <h6>Women</h6>
+            </a>
+        </div>
+        <div class="item btn ">
+            <a (click)="filter('formals')">
+               
+                <h6>Men</h6>
+            </a>
+        </div>
+        <div class="item btn">
+            <a (click)="filter('Traditional')">
+                <h6>children</h6>
+            </a>
+        </div>
+        
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="row">
+        <!-- <ng-container *ngFor="let item of filterCategory  ">
+            <div style="margin-left: 100px;" class="card col-md-4">
+                <img src="{{item.image}}">
+                <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.title}}</h5>
+                <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
+                <p><strong>Price:</strong> ${{item.price}}</p>
+                <button class="btn btn-primary" (click)=addtocart(item)>Add to cart</button>
+                <p><strong>Rating</strong>{{item.rating}}</p>
+                <p><strong>Category</strong>{{item.category}} </p>
+                <p></p>
+            </div>
+        </ng-container> -->
+
+        <ng-container *ngFor="let item of filterCategory | filter:searchKey:'title' ">
+            <div class="card col-md-3 bg-light " style="border-radius: 20px;">
+                <img src="{{item.ImageLink}}">
+                <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.Title}}</h5>
+                <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.Description}}</p>
+                <p><strong>Price:</strong>  ₹ {{item.Price}}</p>
+                <button class="btn btn-primary" (click)=addtocart(item)>Add to cart</button>
+                <p><strong>Rating</strong> {{item.Rating}}</p>
+                <p><strong>Category</strong> {{item.Category}} </p>
+                <p></p>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
+</body>

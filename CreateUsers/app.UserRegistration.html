@@ -1,0 +1,94 @@
+<app-header></app-header>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!---<title> Responsive Registration Form | CodingLab </title>--->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Registration Form</title>
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="user-details">
+            <div class="input-box">
+                <span class="details">Username</span>
+                <input type="text" class="form-control" name="UserName" [(ngModel)]="UserModel.UserName" maxlength="50" placeholder="Enter your username" 
+                                        #refUserName="ngModel" id="UserName" required>
+                <div *ngIf="!refUserName.valid  && (refUserName.dirty || refUserName.touched)" class="alert alert-danger">                                        
+                 UserName is required
+                </div>
+            </div>
+            <div class="input-box">
+                <span class="details">Full Name</span>
+                <input type="text" class="form-control" name="FullName" maxlength="50" [(ngModel)]="UserModel.FullName" maxlength="50" placeholder="Enter your full name"
+                                        #refFullName="ngModel" id="FullName" required>
+                <div *ngIf="!refFullName.valid  && (refFullName.dirty || refFullName.touched)" class="alert alert-danger">                                       
+                  FullName is required
+                </div>
+            </div>
+            
+            <div class="input-box">
+                <span class="details">Email</span>
+                <input type="text" class="form-control" maxlength="50" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="EmailId" [(ngModel)]="UserModel.EmailId" maxlength="50" placeholder="Enter your email"
+                                        #refEmailId="ngModel" id="EmailId" required>
+                <div *ngIf="!refEmailId.valid  && (refEmailId.dirty || refEmailId.touched)" class="alert alert-danger">                                       
+                   EmailId is required                                        
+                </div>
+            </div>
+            <div class="input-box">
+                <span class="details">Phone Number</span>
+                <input type="text" class="form-control" name="Contactno" [(ngModel)]="UserModel.Contactno" placeholder="Enter your number" 
+                                        maxlength="10" #refContactno="ngModel" id="Contactno" required>
+                <div *ngIf="!refContactno.valid  && (refContactno.dirty || refContactno.touched)" class="alert alert-danger">                                       
+                    Phone number is required
+                </div>
+            </div>
+            <div class="input-box">
+                <span class="details">Password</span>
+                <input type="password" class="form-control" name="Password" [(ngModel)]="UserModel.Password" placeholder="Enter your password" 
+                                        maxlength="50" #refPassword="ngModel" id="Password" required>
+                <div *ngIf="!refPassword.valid  && (refPassword.dirty || refPassword.touched)" class="alert alert-danger">                                        
+                     Password is required
+                </div>
+            </div>
+            <!-- <div class="input-box">
+                <span class="details">Confirm Password</span>
+                <input type="text" placeholder="Confirm your password" required>
+            </div> -->
+            <div class="input-box">
+                <span class="details">Terms & Conditions</span>
+                <input class="checkbox" type="checkbox" name="Status" [(ngModel)]="UserModel.Status" maxlength="30" #refStatus="ngModel"
+                                        id="Status" required>
+                <div *ngIf="!refStatus.valid  && (refStatus.dirty || refStatus.touched)" class="alert alert-danger">                                        
+                    Agree with the Terms & Conditions
+                </div>
+            </div>
+        </div>
+        
+        <!-- <div class="button">
+          <input type="submit" value="Register">
+        </div> -->
+        <div class="button">
+            <button type="submit" [disabled]="!f.form.valid" class="register">Register</button>
+        </div>
+      </form>
+      <p style="margin-top:20px;">Already have an account? Click on
+        <a  class="btn btn-outline-info" [routerLink]="['/Login']">Login </a>
+      <p>
+      <!-- <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+                <p style="margin-top:20px;">Already have an account? Click on
+                    <a  class="btn btn-outline-info" [routerLink]="['/Login']">Login </a>
+                <p>
+            </div>            
+        </div>  
+    </div> -->
+    </div>
+  </div>
+</body>
+</html>

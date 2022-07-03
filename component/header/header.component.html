@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+   <title>Header</title>
+ </head>
+ <body>
+   <nav class="navbar">
+     <!-- LOGO -->
+     <div class="logo"><i style="font-size: 40px; color:rgb(88, 8, 51);" class="fas fa-shipping-fast">&nbsp;    
+    </i> <b></b> JeanStation </div>
+    <div></div>
+     <!-- NAVIGATION MENU -->
+     <ul class="nav-links">
+       <!-- USING CHECKBOX HACK -->
+       <input type="checkbox" id="checkbox_toggle" />
+       <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+       <!-- NAVIGATION MENUS -->
+       <div class="menu">
+         <li><a routerLink="/products">Home</a></li>
+         <li><a routerLink="/about">About</a></li>
+         <li *ngIf="!isLoggedInUser"><a routerLink="/UserRegistration">Register</a></li>
+         <li *ngIf="!isLoggedInUser"><a routerLink="/Login">Login</a></li>
+         <li ><a routerLink="/contact">Contact</a></li>
+         <li *ngIf="isLoggedInUser"><a routerLink="/User/Profile">{{currentUserName}} Profile</a></li>
+         <li *ngIf="isLoggedInUser"><a routerLink="/user/orders">Orders</a></li>
+         <li *ngIf="isLoggedInUser"><a routerLink="/UserLogout">Logout</a></li>
+         <li *ngIf="isLoggedInUser"><a routerLink="/cart"><i style="font-size: 30px;" class="fas fa-cart-plus"></i></a> 
+            <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+         </li>
+
+         <!-- <li class="services">
+           <a href="/">Services</a>
+           <ul class="dropdown">
+             <li><a href="/">Dropdown 1 </a></li>
+             <li><a href="/">Dropdown 2</a></li>
+             <li><a href="/">Dropdown 2</a></li>
+             <li><a href="/">Dropdown 3</a></li>
+             <li><a href="/">Dropdown 4</a></li>
+           </ul>
+         </li> -->
+         
+       </div>
+     </ul>
+   </nav>
+ </body>
+</html>
+
+
